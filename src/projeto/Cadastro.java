@@ -18,104 +18,34 @@ public class Cadastro {
        this.reservasMateriais = new ArrayList<>(); // Inicializando a lista de reservas de materiais
        this.reservasAmbientes = new ArrayList<>(); // Inicializando a lista de reservas de ambientes
    }
-   // Método para cadastrar um professor
-   public void cadastrarProfessor() throws NumberFormatException {
-       try {
-           System.out.println("Cadastro de Professor:");
-
-           System.out.print("ID: ");
-           int id = Integer.parseInt(sc.nextLine());
-
-           System.out.print("Nome: ");
-           String nome = sc.nextLine();
-           if (nome.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Email: ");
-           String email = sc.nextLine();
-           if (email.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("CPF: ");
-           String cpf = sc.nextLine();
-           if (cpf.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Grau Acadêmico: ");
-           String grauAcademico = sc.nextLine();
-           if (grauAcademico.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Ano de Ingresso: ");
-           String anoIngresso = sc.nextLine();
-           if (anoIngresso.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Disciplina: ");
-           String disciplina = sc.nextLine();
-           if (disciplina.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           Professor professor = new Professor(id, email, nome, cpf, grauAcademico, anoIngresso, disciplina);
-           professor.cadastrar();
-           usuarios.add(professor);
-           System.out.println("Professor cadastrado com sucesso!\n");
-       } catch (RuntimeException e) {
-           System.out.println("Erro ao cadastrar professor: " + e.getMessage());
-       }
+   // Métodos de cadastro de usuários
+   public void cadastrarProfessor() {
+       System.out.println("Cadastro de Professor:");
+       int id = obterInteiro("ID: ");
+       String nome = obterString("Nome: ");
+       String email = obterString("Email: ");
+       String cpf = obterString("CPF: ");
+       String grauAcademico = obterString("Grau Acadêmico: ");
+       String anoIngresso = obterString("Ano de Ingresso: ");
+       String disciplina = obterString("Disciplina: ");
+       Professor professor = new Professor(id, email, nome, cpf, grauAcademico, anoIngresso, disciplina);
+       professor.cadastrar();
+       usuarios.add(professor);
+       System.out.println("Professor cadastrado com sucesso!\n");
    }
-
-   // Método para cadastrar um aluno
    public void cadastrarAluno() {
-       try {
-           System.out.println("Cadastro de Aluno:");
-
-           System.out.print("ID: ");
-           int id = Integer.parseInt(sc.nextLine());
-
-           System.out.print("Nome: ");
-           String nome = sc.nextLine();
-           if (nome.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Email: ");
-           String email = sc.nextLine();
-           if (email.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("CPF: ");
-           String cpf = sc.nextLine();
-           if (cpf.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Curso: ");
-           String curso = sc.nextLine();
-           if (curso.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           System.out.print("Ano de Ingresso: ");
-           String anoIngresso = sc.nextLine();
-           if (anoIngresso.trim().isEmpty()) {
-               throw new RuntimeException("Valor não pode ser vazio.");
-           }
-
-           Aluno aluno = new Aluno(id, email, nome, cpf, curso, anoIngresso, false);
-           aluno.cadastrar();
-           usuarios.add(aluno);
-           System.out.println("Aluno cadastrado com sucesso!\n");
-       } catch (RuntimeException e) {
-           System.out.println("Erro ao cadastrar aluno: " + e.getMessage());
-       }
+       System.out.println("Cadastro de Aluno:");
+       int id = obterInteiro("ID: ");
+       String nome = obterString("Nome: ");
+       String email = obterString("Email: ");
+       String cpf = obterString("CPF: ");
+       String curso = obterString("Curso: ");
+       String anoIngresso = obterString("Ano de Ingresso: ");
+       boolean isMonitor = obterBoolean("É monitor? (true/false): ");
+       Aluno aluno = new Aluno(id, email, nome, cpf, curso, anoIngresso, isMonitor);
+       aluno.cadastrar();
+       usuarios.add(aluno);
+       System.out.println("Aluno cadastrado com sucesso!\n");
    }
    public void cadastrarAssistenteAdm() {
        System.out.println("Cadastro de Assistente Administrativo:");
@@ -411,3 +341,4 @@ public class Cadastro {
        }
    }
 }
+

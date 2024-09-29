@@ -15,7 +15,11 @@ public class Usuario {
         this.cadastrado = false; // Valor padrão
     }
 
-    // Método para marcar o cadastro como feito
+    public Usuario(String nome2, int id2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	// Método para marcar o cadastro como feito
     public void cadastrar() {
         this.cadastrado = true;
     }
